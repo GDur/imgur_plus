@@ -6,6 +6,7 @@
     "version": "1.0",
     "content_scripts": [{
         "matches": ["http://imgur.com/*", "file:///*"],
+        "exclude_globs": ["http://imgur.com/include/*"],
         "css": ["style.css"],
         "js": [
             "jquery.min.js",
