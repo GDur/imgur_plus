@@ -2,11 +2,12 @@
 var secondsToWaitGallerie = 5;
 
 
-// preload 3 images 
+// preload images 
 // if hovering over image it loads another image
 var standardWaitBeforeLoadTimeInMS = 1000;
-preloadImage(3, standardWaitBeforeLoadTimeInMS, 0);
+preloadImage(2, standardWaitBeforeLoadTimeInMS, 0);
 
+autoClickViewEntireAlbum();
 
 
 
@@ -16,23 +17,28 @@ preloadImage(3, standardWaitBeforeLoadTimeInMS, 0);
 var oldTitle = "";
 $('#image-title').bind("DOMSubtreeModified", function() {
     if ($(this).html() !== oldTitle) {
-        autoClickGallery();
+        autoClickViewEntireAlbum();
         counter = -1;
         preloadImage(2, standardWaitBeforeLoadTimeInMS);
         oldTitle = $(this).html();
     }
 });
 
+function autoClickViewEntireAlbum() {
+    var scriptNode = document.createElement('script');
+    scriptNode.textContent = autoClickGallery + '\nautoClickGallery(5);';
+    document.body.appendChild(scriptNode);
+}
+
 
 var index = 0;
 var counter = -1;
-autoClickGallery();
 
-
-function autoClickGallery() {
+function autoClickGallery(seconds) {
     setTimeout(function() {
-        $("#album-truncated a").click();
-    }, secondsToWaitGallerie * 1000);
+        $("a#album-truncated").click();
+        $("a:contains('View the entire album, 12 images total (2 remaining).')").click();
+    }, seconds * 1000);
 }
 
 function preloadImage(howMany, delay, from) {
