@@ -1,8 +1,9 @@
 imgur_plus
 ==========
 
-Imgur Plus is an unofficial open source chrome extension which enables preloading of images in order to make browsing more comfortable.
-
+Imgur Plus is an unofficial open source chrome extension which offers the following features for a more comfortable imgur experience:
+- preloading of images in the comment section
+- will click the "View the entire album..." button after ~5 seconds
 
 How to install:
 ---------------
