@@ -10,9 +10,30 @@ preloadImage(2, standardWaitBeforeLoadTimeInMS, 0);
 autoClickViewEntireAlbum();
 
 
+/*
+chrome.storage.sync.set({
+    'value': "test"
+}, function() {
+    // Notify that we saved.
+    alert('Settings saved');
+});*/
 
-
-
+chrome.storage.sync.get("value", function(obj) {
+    console.log(obj);
+});
+/*
+chrome.storage.onChanged.addListener(function(changes, namespace) {
+    for (key in changes) {
+        var storageChange = changes[key];
+        console.log('Storage key "%s" in namespace "%s" changed. ' +
+            'Old value was "%s", new value is "%s".',
+            key,
+            namespace,
+            storageChange.oldValue,
+            storageChange.newValue);
+    }
+});
+*/
 
 var oldTitle = "";
 $('#image-title').bind("DOMSubtreeModified", function() {
